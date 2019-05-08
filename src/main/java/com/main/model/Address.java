@@ -10,9 +10,15 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * @author Kandarp Dave
+ * 
+ * The Entity class Address
+ */
 @Entity
 public class Address {
 	
+	/** Address Id */
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="Address_Id")
 	private Long addrId;
@@ -20,39 +26,37 @@ public class Address {
 	@ManyToOne
 	@JoinColumn(name="UserId")
 	private UserDetails userDetails;
-	
-	public UserDetails getUserDetails() {
-		return userDetails;
-	}
 
-	public void setUserDetails(UserDetails userDetails) {
-		this.userDetails = userDetails;
-	}
-
+	/** Street 1 */
 	@NotNull
 	@Size(max=80)
 	@Column(name="Street_1")
 	private String street1;
 	
+	/** Street 2 */
 	@NotNull
 	@Size(max=80)
 	@Column(name="Street_2")
 	private String street2;
 	
+	/** Pincode */
 	@NotNull
 	@Column(name="Pincode")
 	private Integer pincode;
 	
+	/** City */
 	@NotNull
 	@Size(max=50)
 	@Column(name="City")
 	private String city;
 	
+	/** State */
 	@NotNull
 	@Size(max=50)
 	@Column(name="State")
 	private String state;
 	
+	/** Country */
 	@NotNull
 	@Size(max=50)
 	@Column(name="Country")
@@ -114,5 +118,11 @@ public class Address {
 		this.country = country;
 	}
 
-	
+	public UserDetails getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(UserDetails userDetails) {
+		this.userDetails = userDetails;
+	}	
 }

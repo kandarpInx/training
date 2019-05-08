@@ -19,68 +19,77 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.DynamicInsert;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * @author Kandarp Dave
+ * 
+ * The Entity class UserDetails
+ */
 @Entity
+@DynamicInsert
 public class UserDetails {
 	
+	/** User Id */
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="User_Id")
 	private Long userId;
 	
+	/** First Name */
 	@NotNull
 	@Size(min=3,max=40)
 	@Column(name="First_Name")
 	private String firstName;
 	
+	/** Last Name */
 	@NotNull
 	@Size(min=3,max=40)
 	@Column(name="Last_Name")
 	private String lastName;
 
+	/** Birth Date */
 	@NotNull
-//	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	@Column(name="Date_Of_Birth")
 	private Date dateOfBirth;
 	
+	/** Email Id */
 	@NotNull
 	@Size(max=50)
 	@Column(unique=true, name="Email_Id")
 	private String emailId;
 	
-	@Override
-	public String toString() {
-		return "UserDetails [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", dateOfBirth=" + dateOfBirth + ", emailId=" + emailId + ", password=" + password + ", gender="
-				+ gender + ", contactNo=" + contactNo + ", language=" + language + ", role=" + role + ", addresses="
-				+ addresses + "]";
-	}
-
+	/** Password */
 	@NotNull
 	@Size(min=8, max=20)
 	@Column(name="Password")
 	private String password;
 	
+	/** Gender */
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name="Gender")
 	private Gender gender;
 	
+	/** Contact number */
 	@NotNull
 	@Size(min=13,max=13)
 	@Column(name="Contact_Number")
 	private String contactNo;
 	
+	/** Languages */
 	@NotNull
 	@Column(name="Language")
 	private String language;
 	
+	/** Role */
 	@Enumerated(EnumType.STRING)
-	@Column(name="Role")
-	private Role role = Role.User;
+	@Column(name="Role",  columnDefinition="varchar(10) default 'User'")
+	private Role role;
 	
+	/** List of addresses */
 	@JsonIgnore
 	@OneToMany(mappedBy="userDetails", fetch=FetchType.EAGER,  targetEntity=Address.class)
 	@Cascade(CascadeType.ALL)
@@ -175,5 +184,13 @@ public class UserDetails {
 		this.addresses = addresses;
 	}
 	
+	@Override
+	public String toString() {
+		return "UserDetails [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", dateOfBirth=" + dateOfBirth + ", emailId=" + emailId + ", password=" + password + ", gender="
+				+ gender + ", contactNo=" + contactNo + ", language=" + language + ", role=" + role + ", addresses="
+				+ addresses + "]";
+	}
+
 	
 }

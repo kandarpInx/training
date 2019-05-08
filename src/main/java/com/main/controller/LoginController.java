@@ -16,16 +16,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.main.model.UserDetails;
 import com.main.service.UserService;
 
-
+/**
+ * @author Kandarp Dave
+ * 
+ * The Class LoginController
+ */
 @Controller
 @RequestMapping("App/jsps")
 public class LoginController {
 	
 	final static Logger logger = Logger.getLogger(LoginController.class);
 	
+	/** User service. */
 	@Autowired
 	private UserService userService; 
 	
+	
+	/**
+	 * Map requests on index page
+	 *
+	 * @return the String to map index page
+	 */
 	@RequestMapping("/")
 	public String byDefault() {
 		
@@ -33,6 +44,15 @@ public class LoginController {
 		return "index";
 	}
 	
+	/**
+	 * For user authentication and retrieve appropriate data
+	 *
+	 * @param emailid for Email id or username of user
+	 * @param password for password
+	 * @param model the model
+	 * @param Httpsession for store data in session variable
+	 * @return the String
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String authentication(Model model, @RequestParam("emailId") String emailId, @RequestParam("password") String password,
 			HttpSession session) {

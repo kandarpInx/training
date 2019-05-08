@@ -8,6 +8,11 @@ import com.main.Common.service.GenericsServiceImpl;
 import com.main.dao.UserDAO;
 import com.main.model.UserDetails;
 
+/**
+ * @author Kandarp Dave
+ * 
+ * The Service class UserServiceImplementation
+ */
 @Service
 public class UserServiceImpl extends GenericsServiceImpl<UserDetails, Long> implements UserService {
 
