@@ -1,0 +1,16 @@
+table{
+    width:100%;
+}
+#example_filter{
+    float:right;
+    color:black;
+}
+#example_paginate{
+    float:right;
+}
+
+.mydatatable{
+	padding-top: 20px;
+}
+
+th, td { text-align: center; }
