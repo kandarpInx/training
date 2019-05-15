@@ -1,7 +1,14 @@
 <#include "header.ftl">
 
+
+<#if Session.userDetails??>
+   <script language="javascript">
+		location.replace("http://localhost:8080/training/App/ftls/displayData"); 
+	</script> 
+</#if>
+
 <div class="container">	
-      <form name="myform" class="form-horizontal" action="LoginServlet" method="post">
+      <form name="myform" class="form-horizontal" action="login" method="post">
         <fieldset>
 
           <!-- Form Name -->
@@ -41,11 +48,13 @@
             <label class="col-md-4 control-label"></label>  
             <div class="col-md-4">
               <div class="input-group">
-        <#--      <%=(request.getAttribute("error") == null) ? "" : request.getAttribute("error")%> --> 
+              <#if error??>
+              	${error}
+              </#if>
               <br>
-              	New User?? <a href="RegistrationServlet"> Click Here </a>
+              	New User?? <a href="showDetails"> Click Here </a>
 			<br>
-              	Forgot Password ??? <a href="forgot.jsp"> Click Here </a>
+              	Forgot Password ??? <a href="forgotPassword"> Click Here </a>
               </div>
             </div>
             <div class="col-md-4">
@@ -65,3 +74,5 @@
         </fieldset>
       </form>
     </div>
+    
+<#include "footer.ftl">

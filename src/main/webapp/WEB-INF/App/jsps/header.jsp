@@ -34,7 +34,7 @@
 		  <a href="<%=request.getContextPath()%>/AdminDataServlet" class="logo"><img class="logoHeader" 
 		  src="<c:url value="/resources/image/logo.png" />"></a>
 		  <div class="header-right">
-		    <form action="RegistrationServlet"  method="post">
+		    <form action="logout"  method="post">
 				<button class="btn btn-warning" name="btnValue" value="logout" type="submit"> Logout </button>
 			</form>
 		  </div>

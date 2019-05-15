@@ -1,11 +1,7 @@
-window.addEventListener( "pageshow", function ( event ) {
-  var historyTraversal = event.persisted || 
-                         ( typeof window.performance != "undefined" && 
-                              window.performance.navigation.type === 2 );
-  if ( historyTraversal ) {
-    // Handle page restore.
-    window.location.reload();
-  }
+$(window).bind("pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+        window.location.reload(); 
+    }
 });
 
 $(document).ready(function() {
@@ -17,7 +13,7 @@ $(document).ready(function() {
 	});
 
 	$(document).find('.theButton').on('click',function(){
-	/* alert($(this).closest("tr").find(".nr").text()); */
+//	 alert($(this).closest("tr").find(".nr").text()); 
     $.ajax({
         type: "POST",
         url: "ListAddress",
@@ -39,6 +35,26 @@ $(document).ready(function() {
         }
     });
 });
+	
+	
+	$(document).find('.forgot').on('click', function() {
+	var emailId = $('#emailId').val();
+	$.ajax({
+		type : "POST",
+		url : "forgotData",
+		data : {
+			emailId : document.getElementById('emailId').value
+		},
+		success : function(result) {
+			if (result==null)
+				alert('Please Enter valid E-mail Address');
+			else {
+				alert('Your password is :: '+ result);
+			}
+		}
+	});
+});
+	
 	
 	// popover demo
 	$('#example').find('.popovers')

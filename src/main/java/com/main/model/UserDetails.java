@@ -36,16 +36,16 @@ public class UserDetails {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="User_Id")
 	private Long userId;
-	
+
 	/** First Name */
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min=3,max=45)
 	@Column(name="First_Name")
 	private String firstName;
 	
 	/** Last Name */
 	@NotNull
-	@Size(min=3,max=40)
+	@Size(min=3,max=45)
 	@Column(name="Last_Name")
 	private String lastName;
 
@@ -57,13 +57,13 @@ public class UserDetails {
 	
 	/** Email Id */
 	@NotNull
-	@Size(max=50)
+	@Size(max=255)
 	@Column(unique=true, name="Email_Id")
 	private String emailId;
 	
 	/** Password */
 	@NotNull
-	@Size(min=8, max=20)
+	@Size(min=8, max=45)
 	@Column(name="Password")
 	private String password;
 	
@@ -191,6 +191,4 @@ public class UserDetails {
 				+ gender + ", contactNo=" + contactNo + ", language=" + language + ", role=" + role + ", addresses="
 				+ addresses + "]";
 	}
-
-	
 }

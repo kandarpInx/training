@@ -7,4 +7,8 @@ public interface UserDAO extends GenericDAO<UserDetails, Long> {
 	
 	public UserDetails getUser(String emailId, String password);
 
+	public int getEmail(String emailId);
+
+	public String forgotPassword(String emailId);
+
 }

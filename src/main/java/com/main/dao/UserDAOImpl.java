@@ -1,5 +1,7 @@
 package com.main.dao;
 
+import java.util.List;
+
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +24,32 @@ public class UserDAOImpl<E,I> extends GenericDAOImpl<UserDetails, Long> implemen
         query.setParameter("emailId", emailId);
         query.setParameter("password", password);
         return (UserDetails) query.uniqueResult();
+	}
+
+	public int getEmail(String emailId) {
+		
+		Query<UserDetails> query = sessionFactory.getCurrentSession()
+				.createQuery("FROM UserDetails u where u.emailId=:emailId",
+						UserDetails.class);
+        query.setParameter("emailId", emailId);
+        
+        List<UserDetails> list = query.getResultList();
+		
+		return list.size(); 
+	}
+
+	public String forgotPassword(String emailId) throws IndexOutOfBoundsException {
+		
+		Query<UserDetails> query = sessionFactory.getCurrentSession()
+				.createQuery("FROM UserDetails u where u.emailId=:emailId",
+						UserDetails.class);
+        query.setParameter("emailId", emailId);
+        
+        
+        List<UserDetails> ud = query.getResultList();
+        
+        
+        return ud.get(0).getPassword();
 	}
 
 }

@@ -196,7 +196,7 @@ function checkemail() {
 	var status = true;
 	$.ajax({
 		type : "post",
-		url : "EmailAddressValidationServlet",
+		url : "emailAddressAvailability",
 		data : {
 			emailid : document.getElementById('emailid').value
 		},
@@ -385,9 +385,9 @@ function validateForm(event){
 	
     if(validateFname() && validateLname() && validateBirthdate() && validatePhone() && validateEmail() &&
     		validateGender() && validateLanguage() && validateStreet1() && validateStreet2() && validateCity() 
-    		&& validatePincode() && validateState() && validateCountry())  /*&& checkemail()*/
+    		&& validatePincode() && validateState() && validateCountry() && checkemail())
     {
-    	alert("Successful");
+    	console.log("success");
     }
     else{
     	alert("Please fill required fields first...!");

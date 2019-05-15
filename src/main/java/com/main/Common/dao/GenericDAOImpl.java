@@ -8,6 +8,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author Kandarp Dave
+ * 
+ * The Generic class GenericDAO Implementation
+ */
 @Repository
 public abstract class GenericDAOImpl<E, I extends Serializable> implements GenericDAO<E, I> {
 
@@ -15,7 +20,8 @@ public abstract class GenericDAOImpl<E, I extends Serializable> implements Gener
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	/** Session Factory */
 	@Autowired
 	protected SessionFactory sessionFactory;
 	
@@ -36,23 +42,53 @@ public abstract class GenericDAOImpl<E, I extends Serializable> implements Gener
 	 * " using GenericDAO"); }
 	 */
 	
+	/**
+	 * Fetch all the details in list
+	 *
+	 * @return List
+	 */
 	@SuppressWarnings("unchecked")
 	public List<E> getAll() {
 		return sessionFactory.getCurrentSession().createQuery("from " + classs.getName()).list();
 	}
-
+	
+	/**
+	 * Fetch single detail from id
+	 * 
+	 * @param id
+	 * @return entity
+	 * 
+	 */
 	public E get(I id) {
 		return (E) sessionFactory.getCurrentSession().get(classs, id);
 	}
 
+	/**
+	 * Save entity
+	 * 
+	 * @param entity
+	 * 
+	 */
 	public void save(E entity) {
 		sessionFactory.getCurrentSession().save(entity);
 	}
 	
+	/**
+	 * Remove entity
+	 * 
+	 * @param entity
+	 * 
+	 */
 	public void delete(E entity) {
 		sessionFactory.getCurrentSession().delete(entity);
 	}
-
+	
+	/**
+	 * update entity
+	 * 
+	 * @param entity
+	 * 
+	 */
 	public void update(E entity) {
 		sessionFactory.getCurrentSession().update(entity);
 	}

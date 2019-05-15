@@ -2,7 +2,11 @@ package com.main.Common.dao;
 
 import java.io.Serializable;
 import java.util.List;
-
+/**
+ * @author Kandarp Dave
+ * 
+ * The Generic Interface GenericDAO
+ */
 public interface GenericDAO<E,I> extends Serializable {
 	
 	public List<E> getAll();

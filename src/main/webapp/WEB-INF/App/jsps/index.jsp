@@ -1,12 +1,12 @@
 <%@ include file="header.jsp" %>
-<%-- <%
+<%
     session=request.getSession(false);
     if(session.getAttribute("userDetails")!=null)
     {
-        response.sendRedirect("login");
+        response.sendRedirect("displayData");
     }
 
-%> --%>
+%>
 
     <div class="container">	
       <form name="myform" class="form-horizontal" action="login" method="post">
@@ -53,7 +53,7 @@
               <br>
               	New User?? <a href="showDetails"> Click Here </a>
 			<br>
-              	Forgot Password ??? <a href="forgot.jsp"> Click Here </a>
+              	Forgot Password ??? <a href="forgotPassword"> Click Here </a>
               </div>
             </div>
             <div class="col-md-4">

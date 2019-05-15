@@ -28,6 +28,18 @@ public class UserServiceImpl extends GenericsServiceImpl<UserDetails, Long> impl
 	public UserDetails validUser(String emailId, String password) {
 		return userDAO.getUser(emailId, password);
 	}
+
+	@Transactional
+	public int isEmailExists(String emailId) {
+		// TODO Auto-generated method stub
+		return userDAO.getEmail(emailId);
+	}
+
+	@Transactional
+	public String forgotPassword(String emailId) throws IndexOutOfBoundsException {
+		// TODO Auto-generated method stub
+		return userDAO.forgotPassword(emailId);
+	}
 	
 
 }

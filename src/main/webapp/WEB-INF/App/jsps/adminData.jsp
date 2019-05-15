@@ -66,7 +66,7 @@
 											Update
 										</button> 
 									</form>
-									<form action="RegistrationServlet" method="post">
+									<form action="deleteForm" method="post">
 										<input type="hidden" name="userId" value="${data.userId}" /> 
 										<c:if test="${sessionScope.userDetails.userId ne data.userId}">
 										<button type="submit" class="btn btn-link" 

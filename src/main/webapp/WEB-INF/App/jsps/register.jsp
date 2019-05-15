@@ -1,4 +1,5 @@
   <%@ include file="header.jsp" %>
+  
     <div class="container">
 
 		<div class="row">
@@ -131,7 +132,7 @@
 						</div>
 					</div>
 
-<c:if test="${sessionScope.userDetails.userId eq null}">
+
 					<!-- password input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label">Password *</label>
@@ -154,7 +155,7 @@
 							<p id="error5"></p>
 						</div>
 					</div>
-
+<c:if test="${sessionScope.userDetails.userId eq null}">
 					<!-- Password input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label">Confirm Password *</label>

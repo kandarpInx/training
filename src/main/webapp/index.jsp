@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="0; url=<c:url value='/App/jsps/'/>" >
+<meta http-equiv="refresh" content="0; url=<c:url value='/App/ftls/'/>" >
 <title>Spring Application</title>
 </head>
 <body>
